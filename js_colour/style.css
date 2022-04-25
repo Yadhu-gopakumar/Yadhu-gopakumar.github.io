@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    box-sizing: border-box;
+   
+}
+nav{
+    height: 50px;
+    width: 100vw;
+    background-color: aliceblue;
+    box-shadow: 10px 0 15px 2px #000;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   padding:0 ;
+}
+nav .left{
+    margin-left:5%;
+}
+.left h4{
+    letter-spacing: 3px;
+    font-family: cursive;
+    font-size:100%;
+    color: rgb(50, 79, 131);
+    text-shadow: 2px 2px 5px rgb(28, 44, 54);
+}
+nav .right{
+    padding-right: 10%;
+    margin-right: 0;
+}
+.right>ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+.right>ul>li>a{
+    color: black;
+    padding: 1rem;
+    text-decoration: none;
+    font-size: 100%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular',
+     'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, 
+     sans-serif;
+    font-weight:bolder;
+    letter-spacing: 2px;
+}
+.right>ul>li>a:last-child{
+    margin-right: 5%;
+}
+.right>ul>li>a:hover{
+    text-shadow:1px 0px 5px rgb(99, 96, 96);
+}
+
+.container{
+    position: fixed;
+    z-index: -999;
+    background-color: rgb(165, 163, 157);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+    justify-content: center;
+   
+}
+.discription{
+
+    margin: 14% auto 6% auto;
+    width: 65%;
+    height: 13%;
+    background-color: rgba(43, 41, 41, 0.808);
+    border-radius: 9px;
+    border: 6px solid rgb(13, 228, 59);
+    box-shadow: 0 0  10px 2px black; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+}
+.discription h3{
+    color: #fff;
+    font-family: cursive;
+    font-size: 100%;
+    position: relative;
+}
+ #color_display_name{
+    color: rgb(46, 135, 252);
+    font-size:20px;
+    font-weight: bold;
+    padding: 0 1px;
+}
+
+.butn{
+    margin-top: 3px ;
+    height: 50px;
+    width: 100px;
+    border-radius: 9px;
+    border: 3px solid rgb(33, 192, 19);
+    cursor: pointer;
+}
+#btn:hover{
+    box-shadow: 0 0 10px 10px rgb(80, 80, 85);
+    background-color: aquamarine;
+}
