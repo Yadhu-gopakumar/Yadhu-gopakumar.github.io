@@ -10,8 +10,8 @@ var color_name;
 simple.addEventListener("click",()=>{
   simple_color=true;
 })
-simple.addEventListener("click",()=>{
-  simple_color=true;
+hex.addEventListener("click",()=>{
+  simple_color=false;
 })
 //function of changing color of container
 function change() {
