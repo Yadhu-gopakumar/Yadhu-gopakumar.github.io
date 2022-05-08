@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <title>weather_app_js</title>
+</head>
+
+<body>
+    <div id="loader">
+      <img class="load_img"src="images/loader.gif" alt="">
+    </div>
+    <main>
+        
+        <div class="img_container" id="img_container">
+     
+            <div class="bottom_info">
+                <span class="temp"><div id="temp"></div>°C</span>
+                <div class="city_date">
+                    <div id="city_name"></div>
+                    <div id="date">22-3-2002</div>
+                </div>
+                <div class="city_date">
+                    <div id="city_name">
+                        <div id="icon">
+
+                        </div>
+                    
+                </div>
+                    <div id="weather"></div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="sidebox">
+            <div class="searchbar">
+                <input type="text" placeholder="search city..." id="search_city">
+
+                <div id="button_box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+
+            </div>
+            <div id="location">use your location<i class="fa-solid fa-location-dot "></i></div>
+            <div class="line"></div>
+            <div class="weather_details">
+                <div class="heading">Weather Details</div>
+
+                <div class="info_row">
+                    <div class="cloudy">Pressure</div>
+                    <span class="prefix"><div id="Cloudy_val"></div>pa</span>
+                </div>
+                <div class="info_row">
+                    <div class="Humidity">Humidity</div>
+                    <span class="prefix"><div id="Humidity_val"></div>%</span>
+                </div>
+                <div class="info_row">
+                    <div class="Wind">Wind</div>
+                    <span class="prefix"> <div id="Wind_val"></div>km/h</span>
+                </div>
+                <div class="info_row">
+                    <div class="Rain">Country</div>
+                   <div id="Rain_val"></div>
+                </div>
+
+
+            </div>
+            <div class="line"></div>
+        </div>
+    </main>
+
+
+    <!-- scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
