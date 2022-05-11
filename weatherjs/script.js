@@ -51,6 +51,7 @@ function getapi_response_loc(lon, lat) {
       hide_loading();
 
       var tempval = Math.floor(data['main']['temp']);
+      var degval=(tempval-32)*0.55;
       var cityval = data['name'];
       var discval = data['weather'][0]['description'];
       var iconval=weatherData['weather'][0]['icon'];
@@ -59,7 +60,7 @@ function getapi_response_loc(lon, lat) {
       var jWind_val = data['wind']['speed'];
       var jRain_val = data['sys']['country'];
       // icon.src = "http://openweathermap.org/img/w/"+obj.weather[0].icon+".png";
-      temp.innerHTML = tempval;
+      temp.innerHTML = degval;
       weather.innerHTML = discval;
       city_name.innerHTML = cityval;
       icon.innerHTML=iconval;
