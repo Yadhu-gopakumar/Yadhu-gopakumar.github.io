@@ -109,8 +109,9 @@ function getapi_response(city) {
   )
     .then(data => {
       hide_loading();
-
-      var tempval = Math.floor(data['main']['temp']);
+      
+      var tempval = data['main']['temp'];
+      var degval=Math.floor((tempval-32)*0.55);
       var cityval = data['name'];
       var discval = data['weather'][0]['description'];
       var bg_img=data['weather'][0]['main'];
