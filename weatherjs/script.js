@@ -124,7 +124,7 @@ function getapi_response(city) {
 
 icon.innerHTML="<img src=http://openweathermap.org/img/wn/"+iconCode+"@2x.png>";
       
-      temp.innerHTML = tempval;
+      temp.innerHTML = degval;
       weather.innerHTML = discval;
       city_name.innerHTML = cityval;
       Cloudy_val.innerHTML = jCloudy_val;
