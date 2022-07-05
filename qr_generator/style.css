@@ -69,9 +69,9 @@ body {
 .input {
     outline: none;
     border: 1px solid rgb(134, 126, 126);
-    padding: 8px 20px;
+    padding: 8px 10px;
     border-radius: 50px;
-    margin: 10px auto;
+    margin: 10px;
     color: blue;
     font-size: 16px;
     letter-spacing: 1px;
