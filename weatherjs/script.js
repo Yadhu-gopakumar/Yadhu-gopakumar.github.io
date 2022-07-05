@@ -50,7 +50,8 @@ function getapi_response_loc(lon, lat) {
     .then(data => {
       hide_loading();
 
-      var tempval = Math.floor(data['main']['temp']);
+      var tempval = data['main']['temp'];
+      var degval=Math.floor((tempval-32)*0.55);
       var cityval = data['name'];
       var discval = data['weather'][0]['description'];
       var iconval=weatherData['weather'][0]['icon'];
@@ -59,7 +60,7 @@ function getapi_response_loc(lon, lat) {
       var jWind_val = data['wind']['speed'];
       var jRain_val = data['sys']['country'];
       // icon.src = "http://openweathermap.org/img/w/"+obj.weather[0].icon+".png";
-      temp.innerHTML = tempval;
+      temp.innerHTML = degval;
       weather.innerHTML = discval;
       city_name.innerHTML = cityval;
       icon.innerHTML=iconval;
@@ -108,8 +109,9 @@ function getapi_response(city) {
   )
     .then(data => {
       hide_loading();
-
-      var tempval = Math.floor(data['main']['temp']);
+      
+      var tempval = data['main']['temp'];
+      var degval=Math.floor((tempval-32)*0.55);
       var cityval = data['name'];
       var discval = data['weather'][0]['description'];
       var bg_img=data['weather'][0]['main'];
@@ -122,7 +124,7 @@ function getapi_response(city) {
 
 icon.innerHTML="<img src=http://openweathermap.org/img/wn/"+iconCode+"@2x.png>";
       
-      temp.innerHTML = tempval;
+      temp.innerHTML = degval;
       weather.innerHTML = discval;
       city_name.innerHTML = cityval;
       Cloudy_val.innerHTML = jCloudy_val;
