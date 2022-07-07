@@ -1,4 +1,4 @@
-let img_container=document.getElementById("img_container");
+let img_container = document.getElementById("img_container");
 let temp = document.getElementById("temp");
 let date = document.getElementById("date");
 let city_name = document.getElementById("city_name");
@@ -7,8 +7,11 @@ let Cloudy_val = document.getElementById("Cloudy_val");
 let Humidity_val = document.getElementById("Humidity_val");
 let Wind_val = document.getElementById("Wind_val");
 let Rain_val = document.getElementById("Rain_val");
-var icon=document.getElementById("icon");
-
+var icon = document.getElementById("icon");
+//get date function
+const d = new Date();
+date.innerHTML = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
+//api calls
 const appid = "14e359998245563168f1dd4567bc06b7";
 var city = document.getElementById("search_city");
 var button_box = document.getElementById("button_box");
@@ -29,11 +32,10 @@ ulocation.addEventListener('click', () => {
   display_load();
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
-      let lat = position.coords.latitude;
-      let lon = position.coords.longitude;
-
-      lat = lat.toFixed(2);
-      lon = lon.toFixed(2);
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+      console.log(lat);
+      console.log(lon);
 
       getapi_response_loc(lon, lat);
     })
@@ -49,21 +51,23 @@ function getapi_response_loc(lon, lat) {
   )
     .then(data => {
       hide_loading();
-
-      var tempval = data['main']['temp'];
-      var degval=Math.floor((tempval-32)*0.55);
+      console.log(data['main']);
+      var tempval = Math.floor(data['main']['temp']);
       var cityval = data['name'];
       var discval = data['weather'][0]['description'];
-      var iconval=weatherData['weather'][0]['icon'];
+      var bg_img = data['weather'][0]['main'];
       var jCloudy_val = data['main']['pressure'];
       var jHumidity_val = data['main']['humidity'];
       var jWind_val = data['wind']['speed'];
       var jRain_val = data['sys']['country'];
-      // icon.src = "http://openweathermap.org/img/w/"+obj.weather[0].icon+".png";
-      temp.innerHTML = degval;
+
+      var iconCode = data.weather[0].icon;
+
+      icon.innerHTML = "<img src=http://openweathermap.org/img/wn/" + iconCode + "@2x.png>";
+
+      temp.innerHTML = tempval;
       weather.innerHTML = discval;
       city_name.innerHTML = cityval;
-      icon.innerHTML=iconval;
       Cloudy_val.innerHTML = jCloudy_val;
       Humidity_val.innerHTML = jHumidity_val;
       Wind_val.innerHTML = jWind_val;
@@ -81,7 +85,7 @@ window.onload = function onload_event() {
 
   display_load();
 
-  getapi_response("kerala");
+  getapi_response("pathanamthitta");
 
 }
 
@@ -96,7 +100,7 @@ button_box.addEventListener('click', function () {
     display_load();
     getapi_response(fcity);
   }
-  
+
 }
 );
 
@@ -109,21 +113,21 @@ function getapi_response(city) {
   )
     .then(data => {
       hide_loading();
-      
+
       var tempval = data['main']['temp'];
       var degval=Math.floor((tempval-32)*0.55);
       var cityval = data['name'];
       var discval = data['weather'][0]['description'];
-      var bg_img=data['weather'][0]['main'];
+      var bg_img = data['weather'][0]['main'];
       var jCloudy_val = data['main']['pressure'];
       var jHumidity_val = data['main']['humidity'];
       var jWind_val = data['wind']['speed'];
       var jRain_val = data['sys']['country'];
 
-      var iconCode = data.weather[0].icon; 
+      var iconCode = data.weather[0].icon;
 
-icon.innerHTML="<img src=http://openweathermap.org/img/wn/"+iconCode+"@2x.png>";
-      
+      icon.innerHTML = "<img src=http://openweathermap.org/img/wn/" + iconCode + "@2x.png>";
+
       temp.innerHTML = degval;
       weather.innerHTML = discval;
       city_name.innerHTML = cityval;
@@ -131,34 +135,34 @@ icon.innerHTML="<img src=http://openweathermap.org/img/wn/"+iconCode+"@2x.png>";
       Humidity_val.innerHTML = jHumidity_val;
       Wind_val.innerHTML = jWind_val;
       Rain_val.innerHTML = jRain_val;
-      console.log(bg_img);
-      if (bg_img=='Clouds') {
-        img_container.style.backgroundImage="url('images/cloudy.jpg')";
-      } 
-      else if(bg_img=='Thunderstorm') {
-        img_container.style.backgroundImage="url('images/Thunderstorm.jpg')";
-        
+
+      if (bg_img == 'Clouds') {
+        img_container.style.backgroundImage = "url('images/cloudy.jpg')";
       }
-      else if(bg_img=='Drizzle') {
-        img_container.style.backgroundImage="url('images/Drizzle.jpg')";
-        
-      }else if(bg_img=='Rain') {
-        img_container.style.backgroundImage="url('images/Rain.jpg')";
-        
-      }else if(bg_img=='Snow') {
-        img_container.style.backgroundImage="url('images/Snow.jpg')";
-        
+      else if (bg_img == 'Thunderstorm') {
+        img_container.style.backgroundImage = "url('images/Thunderstorm.jpg')";
+
       }
-      else if(bg_img=='Atmosphere'||bg_img=='Mist') {
-        img_container.style.backgroundImage="url('images/atmosphere.jpg')";
-        
+      else if (bg_img == 'Drizzle') {
+        img_container.style.backgroundImage = "url('images/Drizzle.jpg')";
+
+      } else if (bg_img == 'Rain') {
+        img_container.style.backgroundImage = "url('images/Rain.jpg')";
+
+      } else if (bg_img == 'Snow') {
+        img_container.style.backgroundImage = "url('images/Snow.jpg')";
+
       }
-      else if(bg_img=='Clear') {
-        img_container.style.backgroundImage="url('images/clear.jpg')";
-        
+      else if (bg_img == 'Atmosphere' || bg_img == 'Mist') {
+        img_container.style.backgroundImage = "url('images/atmosphere.jpg')";
+
       }
-      else{
-        img_container.style.backgroundImage="url('images/bg.jpg')";
+      else if (bg_img == 'Clear') {
+        img_container.style.backgroundImage = "url('images/clear.jpg')";
+
+      }
+      else {
+        img_container.style.backgroundImage = "url('images/bg.jpg')";
 
       }
     })
