@@ -256,16 +256,17 @@ input[type='text'] {
         position: relative;
         width: 100%;
         height: 60vh;
+        min-height: 330px;
         grid-area: 'img_container';
     }
 
     #temp {
-        font-size: 80px;
+        font-size: 60px;
     }
 
     #city_name {
         padding: 30px auto;
-        font-size: 25px;
+        font-size: 23px;
     }
 
     #weather {
@@ -275,7 +276,7 @@ input[type='text'] {
 
     #date {
 
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .searchbar {
