@@ -147,7 +147,7 @@ h2,
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-family: cursive;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 60px;
     cursor: pointer;
     color: orange;
