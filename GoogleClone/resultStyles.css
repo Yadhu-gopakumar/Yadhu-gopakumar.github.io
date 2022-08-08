@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.top_container {
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    box-shadow: 0 0 3px 1px grey;
+    position: fixed;
+    top: 0;
+}
+
+.top {
+    width: 100vw;
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+
+}
+
+.top>img {
+    width: 12vw;
+}
+
+.SearchBar {
+    border-radius: 50px;
+    width: 40vw;
+    height: 45px;
+    background-color: rgb(236, 231, 231);
+    box-shadow: 0 0 10px grey;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 5px;
+}
+
+#input {
+    height: 90%;
+    width: 60%;
+    padding: 0 20px;
+    border: none;
+    outline: none;
+    color: black;
+    font-weight: 550;
+    font-size: 15px;
+    background-color: transparent;
+}
+
+#input:valid~#search {
+    color: blue;
+    cursor: pointer;
+}
+
+.search,
+.bi-x {
+    display: none;
+}
+
+.catogories {
+    display: inline-flex;
+    width: 77%;
+    justify-content: flex-start;
+    margin-bottom: 1px;
+}
+
+.cats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: grey;
+    padding: 3px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.cats>p {
+    margin-right: 4px;
+}
+
+.active {
+    color: blue;
+    border-bottom: 3px solid blue;
+}
+
+.bi {
+    display: flex;
+}
+
+.search_results {
+    position: relative;
+    overflow-y: scroll;
+    height: fit-content;
+    min-height: 50vh;
+    margin-top: 140px;
+    margin-left: 100px;
+    padding: 30px;
+    width: 50vw;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.loaded_time {
+
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+#result {
+    word-wrap: break-word;
+    word-break: break-all;
+    padding: 5px;
+    border-bottom: 1px solid rgb(223, 220, 220);
+}
+
+#result_link {
+    color: black;
+    font-size: 14px;
+}
+
+#link {
+    color: blue;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+#link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#about {
+    color: rgb(56, 56, 56);
+    font-size: 14px;
+}
+
+#preloader {
+
+    background-color: white;
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    display: none;
+    place-items: center;
+}
+
+#img {
+    height: 70px;
+}
+
+#cancel {
+    opacity: 0.0;
+}
+
+.imgContainer {
+    width: 200px;
+    height: 200px;
+    align-items: stretch;
+    justify-content: center;
+    border: 3px solid rgb(17, 138, 238);
+    border-radius: 20px;
+    box-shadow: 0 0 10px grey;
+}
+
+.imgContainer>img {
+    border-radius: 20px;
+    display: flex;
+    height: inherit;
+    width: inherit;
+}
+
+@media only screen and (max-width:500px) {
+
+
+    .container {
+        justify-content: center;
+    }
+
+    .top_container {
+
+        justify-content: space-between;
+    }
+
+    .top {
+        width: 50px;
+        height: 110px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .top>img {
+        width: 30vw;
+    }
+
+    .SearchBar {
+        width: 75vw;
+    }
+
+    input::placeholder {
+        font-size: 11px;
+    }
+
+    .catogories {
+        width: 75vw;
+        overflow-x: scroll;
+        margin-top: 20px;
+    }
+
+    .cats {
+        font-size: 12px;
+    }
+
+    .search_results {
+        margin-left: 0px;
+        margin-top: 160px;
+        padding: 20px;
+        width: 80vw;
+    }
+
+    .loaded_time {
+        font-size: 10px;
+        margin-bottom: 10px;
+    }
+
+    #result {
+        word-wrap: break-word;
+        word-break: break-all;
+        padding: 5px;
+        border-bottom: 1px solid rgb(223, 220, 220);
+    }
+
+    #result_link {
+        color: black;
+        font-size: 13px;
+    }
+
+    #about {
+        font-size: 13px;
+    }
+
+}

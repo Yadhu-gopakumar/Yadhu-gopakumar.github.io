@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search_Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="resultStyles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="top_container">
+            <div class="top">
+                <Img src="assets/logo.png" id="home_link"></Img>
+
+                <div class="SearchBar">
+
+                    <i class="bi bi-mic mic" id="mic"></i>
+                    <input id="input" type="text" placeholder="Search Google or type URL">
+                    <i class='bi bi-search search' id="search"></i>
+
+                </div>
+            </div>
+            <div class="catogories">
+                <div class="cats active" id="all">
+                    <i class='bi bi-search'></i>
+                    <p>All</p>
+                </div>
+                <div class="cats" id="images">
+                    <i class='bi bi-images'></i>
+                    <p>Images</p>
+                </div>
+                <div class="cats">
+                    <i class="bi bi-tag-fill"></i>
+                    <p>Shopping</p>
+                </div>
+                <div class="cats">
+                    <i class="bi bi-newspaper"></i>
+                    <p>News</p>
+                </div>
+                <div class="cats">
+                    <i class="bi bi-caret-right-square-fill"></i>
+                    <p>Videos</p>
+                </div>
+                <div class="cats">
+                    <i class="bi bi-three-dots-vertical"></i>
+                    <p>More</p>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="search_results" id="search_results">
+            <!-- preloader -->
+            <div id="preloader">
+                <img id='img' src="assets/Loading.gif">
+            </div>
+            <!-- preloader -->
+
+            <div class="loaded_time" id="loaded_time">
+
+            </div>
+
+            <!-- dynamic results -->
+            <div id="result">
+            </div>
+
+        </div>
+
+    </div>
+    <!-- scripts -->
+    <script>
+        const loadTime = document.getElementById('loadTime');
+        const itemcount = document.getElementById('itemcount');
+        const loaded_time = document.getElementById('loaded_time');
+        const search_results = document.getElementById('search_results');
+        const preloader = document.getElementById('preloader');
+        var imgtrue = false;
+        //function for api handling
+
+        // const url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBQj8rQOHUvbzZvfxlvVtQ1vcPW_tTmEh4&cx=b79c4699865364de9&q=';
+
+        const url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDENMBIFCILn1Gl13pUGDomTZemIezxClM&cx=8f7bfcc5964b91636&q=';
+
+        const getApi = async (q, imgtrue) => {
+            let URL = url + q;
+            try {
+                await fetch(URL).
+                    then((res) => res.json())
+                    .then((data) => {
+                        if (!imgtrue) {
+                            displayItems(data);
+
+                        } else {
+                            displayimages(data.items);
+                        }
+                    });
+            } catch (error) {
+                errordis();
+            }
+        }
+        const errordis = () => {
+            alert('error');
+            preloader.style.display = 'grid';
+        }
+        //function for item display
+        const displayItems = (data) => {
+
+            var count = data.searchInformation.formattedTotalResults;
+            var sec = data.searchInformation.formattedSearchTime;
+            search_results.innerHTML = '';
+
+            p = document.createElement('P');
+            p.innerHTML = "About" + count + " results(" + sec + "seconds)";
+            loaded_time.innerHTML = '';
+            loaded_time.appendChild(p);
+
+            data.items.forEach(res => {
+
+                var titlelink = res.displayLink;
+                var Link = res.link;
+                var Content = res.snippet;
+
+                let results = document.createElement('div');
+                results.setAttribute('id', 'result');
+                let result_link = document.createElement('div');
+                result_link.setAttribute('id', 'result_link');
+                let link = document.createElement('a');
+                link.setAttribute('id', 'link');
+                let about = document.createElement('div');
+                about.setAttribute('id', 'about');
+
+                results.innerHTML = '';
+                result_link.innerHTML = "";
+                link.innerHTML = "";
+                about.innerHTML = "";
+
+                preloader.style.display = 'none';
+
+                result_link.innerHTML = titlelink;
+                link.innerHTML = Link;
+                link.addEventListener('click', () => {
+                    window.location.href = Link;
+                })
+                about.innerHTML = Content;
+
+                search_results.appendChild(results);
+                results.appendChild(result_link);
+                results.appendChild(link);
+                results.appendChild(about);
+
+            });
+        }
+        //images preview
+        const displayimages = (items) => {
+
+            search_results.innerHTML = '';
+
+            items.forEach(item => {
+                var imgurl = item.pagemap.cse_image[0].src;
+
+                const imgContainer = document.createElement('div');
+                imgContainer.classList.add('imgContainer');
+                const img = document.createElement('img');
+                img.src = imgurl;
+
+                imgContainer.innerHTML = '';
+                img.innerHTML = '';
+                preloader.style.display = 'grid';
+                search_results.appendChild(imgContainer);
+                imgContainer.appendChild(img);
+            });
+        }
+
+        //input validation
+        let query = localStorage.getItem('q');
+
+        getApi(query, false);
+        const input = document.getElementById('input');
+        const search = document.getElementById('search');
+        const mic = document.getElementById('mic');
+        const cancel = document.getElementById('cancel');
+        input.value = query;
+        //searching functionality
+        search.addEventListener('click', () => {
+            var val = input.value;
+            if (val !== '') {
+                localStorage.setItem('q', val);
+                v = localStorage.getItem('q');
+                console.log(v);
+                preloader.style.display = 'grid';
+
+                if (imgtrue) {
+                    getApi(val, imgtrue);
+
+                } if (!imgtrue) {
+                    getApi(val, imgtrue);
+                }
+
+            }
+        })
+        //redirecting to the link
+        const home_link = document.getElementById('home_link');
+        home_link.addEventListener('click', () => {
+
+            query = '';
+            window.location.replace('index.html');
+        })
+
+
+        //for all results
+        const all = document.getElementById('all');
+        all.addEventListener('click', () => {
+            all.classList.add('active');
+            images.classList.remove('active');
+
+            search_results.style.display = '';
+            preloader.style.display = 'grid';
+
+            imgtrue = false;
+
+            getApi(query, imgtrue);
+
+        })
+        //for image searching
+        const images = document.getElementById('images');
+        images.addEventListener('click', () => {
+
+            images.classList.add('active');
+            all.classList.remove('active');
+
+            search_results.style.display = 'grid';
+            search_results.style.placeItems = 'center';
+            search_results.style.gridTemplateColumns = 'auto  ';
+            search_results.style.gap = '10px';
+
+            imgtrue = true;
+            getApi(query, imgtrue);
+
+        })
+    </script>
+</body>
+
+</html>

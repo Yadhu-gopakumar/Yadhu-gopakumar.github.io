@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google-Home</title>
+    <link rel="stylesheet" href="homeStyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="top">
+            <div class="top_right">
+                <p>Gmail</p>
+                <p>Images</p>
+                <i class="bi bi-grid-3x3-gap-fill"></i>
+
+            </div>
+        </div>
+        <div class="logo_searchBar">
+            <Img src="assets/logo.png"></Img>
+            <div class="SearchBar">
+                <i class="bi bi-mic mic"></i>
+                <input id="input" type="text" placeholder="Search Google or type URL" required>
+                <i class='bi bi-search search' id="searchBtn"></i>
+
+
+            </div>
+
+            <div class="btns">
+                <button id="searchBtn">Google Search</button>
+                <button>I'm Feeling Lucky</button>
+
+            </div>
+
+        </div>
+        <footer>
+            <p>About</p>
+            <p>Send Feedback</p>
+            <p>Terms</p>
+            <p>Privacy Policy</p>
+
+        </footer>
+    </div>
+
+    <script>
+        const searchBtn = document.getElementById('searchBtn');
+        const input = document.getElementById('input');
+        searchBtn.addEventListener('click', () => {
+            let query = input.value;
+            if (query !== '') {
+                localStorage.setItem('q', query);
+                window.location.href = 'resultPage.html';
+            }
+        })
+    </script>
+
+</body>
+
+</html>
