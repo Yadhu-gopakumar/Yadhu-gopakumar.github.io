@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
+
+
+</head>
+
+<body>
+    <div id="container">
+        <!-- start displa icon -->
+        <div id="win_display">
+            <div class="content">
+                <div id="win_msg"></div>
+                <button id="restart_btn">play again</button>
+
+            </div>
+        </div>
+        <div id="start_display">
+            <div class="content">
+                <div id="msg">Play Now</div>
+                <button id="start_btn">start</button>
+
+            </div>
+        </div>
+
+
+
+        <!-- playing table -->
+        <h2>Tic Tac toe</h2>
+        <span class="underline"></span>
+        <div class="turn_toggler">
+            <div class="xchance">X</div>
+            <div class="ochance">O</div>
+            <div id="toggler"></div>
+        </div>
+        <div class="board" id="board">
+            <div class="strike"></div>
+
+            <div class="box " id="box"></div>
+            <div class="box " id="box"></div>
+            <div class="box " id="box"></div>
+            <div class="box " id="box"></div>
+            <div class="box " id="box"></div>
+            <div class="box " id="box"></div>
+            <div class="box " id="box"></div>
+            <div class="box" id="box"></div>
+            <div class="box " id="box"></div>
+
+
+        </div>
+
+        <div id="restart">
+            <span class="glyphicon glyphicon-repeat"></span>
+        </div>
+
+
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
