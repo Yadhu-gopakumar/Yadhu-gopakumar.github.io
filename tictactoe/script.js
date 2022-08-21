@@ -71,12 +71,12 @@ function togglePlay(current_player, selected_box) {
 
     if (current_player == "x") {
 
-        tgle_btn.style.left = "3px";
+        tgle_btn.style.left = "92px";
         selected_box.style.color = 'red';
     }
     if (current_player == "o") {
 
-        tgle_btn.style.right = '3px';
+        tgle_btn.style.left = '3px';
         selected_box.style.color = ' rgb(0, 153, 255)';
 
 
@@ -99,6 +99,7 @@ function clrBoard() {
     strike.style.transform = 'rotate(0deg)';
     strike.style.top = '150px';
     strike.style.left = '7px';
+     tgle_btn.style.left = '3px';
     filledBox = 0;
     for (let i = 0; i <= 9; i++) {
         box[i].innerHTML = "";
