@@ -55,18 +55,13 @@
             </div>
         </div>
         <div class="search_results" id="search_results">
-            <!-- preloader -->
-            <div id="preloader">
-                <img id='img' src="assets/Loading.gif">
-            </div>
-            <!-- preloader -->
+            <div id="preloader"><img src="assets/Loading.gif" alt=""></div>
 
             <div class="loaded_time" id="loaded_time">
-
             </div>
 
             <!-- dynamic results -->
-            <div id="result">
+            <div id="dresult">
             </div>
 
         </div>
@@ -87,6 +82,7 @@
         const url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBQj8rQOHUvbzZvfxlvVtQ1vcPW_tTmEh4&cx=b79c4699865364de9&q=';
 
         const getApi = async (q, imgtrue) => {
+            preloader.style.display='grid';
             let URL = url + q;
             try {
                 await fetch(URL).
@@ -94,6 +90,7 @@
                     .then((data) => {
                         if (!imgtrue) {
                             displayItems(data);
+
 
                         } else {
                             displayimages(data.items);
@@ -105,19 +102,21 @@
         }
         const errordis = () => {
             alert('error');
-            preloader.style.display = 'grid';
+
         }
         //function for item display
         const displayItems = (data) => {
+            const dresult = document.getElementById('dresult');
 
             var count = data.searchInformation.formattedTotalResults;
             var sec = data.searchInformation.formattedSearchTime;
-            search_results.innerHTML = '';
-
-            p = document.createElement('P');
-            p.innerHTML = "About" + count + " results(" + sec + "seconds)";
+            var p = document.createElement('P');
+            var time = "About" + count + " results(" + sec + "seconds)";
+            p.innerHTML = time;
             loaded_time.innerHTML = '';
             loaded_time.appendChild(p);
+            preloader.style.display = 'none';
+            dresult.innerHTML = '';
 
             data.items.forEach(res => {
 
@@ -139,8 +138,6 @@
                 link.innerHTML = "";
                 about.innerHTML = "";
 
-                preloader.style.display = 'none';
-
                 result_link.innerHTML = titlelink;
                 link.innerHTML = Link;
                 link.addEventListener('click', () => {
@@ -148,17 +145,19 @@
                 })
                 about.innerHTML = Content;
 
-                search_results.appendChild(results);
+                dresult.appendChild(results);
                 results.appendChild(result_link);
                 results.appendChild(link);
                 results.appendChild(about);
 
             });
+
         }
         //images preview
         const displayimages = (items) => {
 
             search_results.innerHTML = '';
+
 
             items.forEach(item => {
                 var imgurl = item.pagemap.cse_image[0].src;
@@ -170,7 +169,7 @@
 
                 imgContainer.innerHTML = '';
                 img.innerHTML = '';
-                preloader.style.display = 'grid';
+
                 search_results.appendChild(imgContainer);
                 imgContainer.appendChild(img);
             });
@@ -192,7 +191,7 @@
                 localStorage.setItem('q', val);
                 v = localStorage.getItem('q');
                 console.log(v);
-                preloader.style.display = 'grid';
+
 
                 if (imgtrue) {
                     getApi(val, imgtrue);
@@ -217,10 +216,7 @@
         all.addEventListener('click', () => {
             all.classList.add('active');
             images.classList.remove('active');
-
-            search_results.style.display = '';
             preloader.style.display = 'grid';
-
             imgtrue = false;
 
             getApi(query, imgtrue);
@@ -232,13 +228,8 @@
 
             images.classList.add('active');
             all.classList.remove('active');
+            preloader.style.display = 'grid';
 
-            search_results.style.display = 'grid';
-            search_results.style.placeItems = 'center';
-            search_results.style.gridTemplateColumns = 'auto  ';
-            search_results.style.gap = '10px';
-
-            imgtrue = true;
             getApi(query, imgtrue);
 
         })
