@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito';
+}
+
+body {
+    display: grid;
+    place-items: center;
+    background: url('assets/bg.webp');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+p {
+    font-weight: bold;
+}
+.title{
+    margin: 30px 0 20px 0;
+    font-size: 35px;
+    color: #02f8bb;
+}
+.text{
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.column {
+
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.column>img {
+    height: 130px;
+}
+button{
+    height: 50px;
+    width: 30vw;
+    margin-top: 30px;
+    border-radius: 9px;
+   background-color: #100a29;
+   border:2px solid #6949fd;
+   color:#6949fd;
+   font-size: 20px;
+}
+#playBtn{
+    background-color: #6949fd;
+    color: white;
+}
+
+@media only screen and (max-width:600px) {
+    button{
+        height: 40px;
+        width: 70vw;
+    }
+}

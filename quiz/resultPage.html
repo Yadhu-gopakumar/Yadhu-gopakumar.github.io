@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="resultpagestyles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="column">
+        <div class="result_title">Results</div>
+        <div id="result">
+
+            <p class="title">Total Correct Answers</p>
+            <p class="result"><span id="attended_qstn_no"></span> out of 10 Questions</p>
+
+        </div>
+        <div class="img_container">
+            <p class="heading">Your score is</p>
+            <div class="mark_container" id="mark">100</div>
+        </div>
+        <Button id="reset">@Try again </Button>
+        <Button id="home">Home</Button>
+
+    </div>
+    <script>
+        const winaudio = new Audio('assets/win.mp3');
+        const loseaudio = new Audio('assets/lose.wav');
+
+       
+        const reset = document.getElementById('reset');
+        const home = document.getElementById('home');
+        const attended_qstn_no = document.getElementById('attended_qstn_no');
+        const mark = document.getElementById('mark');
+
+
+        var json = JSON.parse(localStorage.getItem('res'));
+
+        attended_qstn_no.innerHTML = json['attended'];
+        mark.innerHTML = json['mark'] * 2;
+
+        if ((json['mark'] * 2)>25) {
+            winaudio.play();
+        } else {
+            loseaudio.play();
+        }
+        reset.addEventListener('click', () => {
+            window.location.href = 'quizDisplay.html';
+            Window.localStorage.clear();
+        })
+
+        home.addEventListener('click', () => {
+            window.location.href = 'index.html';
+            localStorage.clear();
+
+        })
+
+    </script>
+
+</body>
+
+</html>

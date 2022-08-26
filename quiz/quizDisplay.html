@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="quizDisplaystyles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="top">
+            <div id="time"></div>
+            <div id="no"></div>
+        </div>
+        <div id="qstn"></div>
+        <div id="options">
+            <div class="option_row" id='option_row1'>
+                <div class="no">01</div>
+                <div id="option1"></div>
+            </div>
+            <div class="option_row" id='option_row2'>
+                <div class="no">02</div>
+                <div id="option2"></div>
+            </div>
+            <div class="option_row" id='option_row3'>
+                <div class="no">03</div>
+                <div id="option3"></div>
+            </div>
+            <div class="option_row" id='option_row4'>
+                <div class="no">04</div>
+                <div id="option4"></div>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="skip">skip</button>
+            <button id="next">next</button>
+
+        </div>
+    </div>
+    <!-- scripts -->
+    <script>
+        const qstnsList = [
+            {
+                'qstn': '2021ലെ വായനാ ദിനത്തിൽ കേരളത്തിലെ ആദ്യ പുസ്തക ഗ്രാമമായി പ്രഖ്യാപിക്കപ്പെട്ട പെരുംങ്കുളം ഏത് ജില്ലയിലാണ്?',
+                'option': ['കൊല്ലം', 'പത്തനംതിട്ട', 'തൃശ്ശൂർ', 'വയനാട്'],
+                'ans': 'കൊല്ലം'
+            },
+            {
+                'qstn': 'ഇന്ത്യയിലെ ആദ്യ കടലാസ് രഹിത ഹൈക്കോടതി?',
+                'option': ['ബോംബെ ഹൈക്കോടതി', 'പഞ്ചാബ് ഹൈക്കോടതി', 'ഡൽഹി ഹൈക്കോടതി', 'കേരള ഹൈക്കോടതി'],
+                'ans': 'കേരള ഹൈക്കോടതി',
+
+            },
+            {
+                'qstn': 'മലയാളത്തിലെ ആദ്യത്തെ രാഷ്ട്രീയ നാടകം?',
+                'option': ['ആൾമാറാട്ടം', 'വൎഷകാലകഥ', 'പാട്ടബാക്കി', 'ജാതിഭേദം'],
+                'ans': 'പാട്ടബാക്കി',
+
+            }, {
+                'qstn': 'ഐക്യരാഷ്ട്രസഭ അന്തർദേശീയ ഗ്ലാസ് വർഷമായി ആചരിക്കുന്നത്?',
+                'option': ['2020', '2022', '2008', '2018'],
+                'ans': '2022',
+
+            },
+            {
+                'qstn': 'ഇന്ത്യൻ ഭരണഘടന അനുശാസിക്കുന്ന മൗലിക കടമകൾ എത്രയാണ്?',
+                'option': ['11', '23', '14', '16'],
+                'ans': '11',
+
+            }, {
+                'qstn': 'സമുദ്രനിരപ്പിൽ നിന്ന് ഏറ്റവും അധികം ഉയരത്തിൽ സ്ഥിതി ചെയ്യുന്ന ഭൂഖണ്ഡം?',
+                'option': ['ഏഷ്യ', 'ആഫ്രിക്ക', 'യൂറോപ്പ്', 'അന്റാർട്ടിക്ക'],
+                'ans': 'അന്റാർട്ടിക്ക',
+
+            }, {
+                'qstn': 'മനുഷ്യ ശരീരത്തിൽ പുനരുൽപ്പാദന ശേഷിയുള്ള ഏക അവയവം?',
+                'option': ['അന്നനാളി', 'ആമാശയം', 'കരൾ', 'ഹൃദയം'],
+                'ans': 'കരൾ',
+
+            }, {
+                'qstn': 'മനുഷ്യശരീരത്തിൽ ഓക്സിജൻ വഹിച്ചുകൊണ്ട് പോകുന്ന ഘടകമേത്?',
+                'option': ['ആൽബുമിൻ', 'ഗ്ലോബുലിൻ', 'ഫൈബ്രിനോജൻ', 'ഹീമോഗ്ലോബിൻ'],
+                'ans': 'ഹീമോഗ്ലോബിൻ',
+
+            }, {
+                'qstn': '‘ഒറിജിൻ ഓഫ് സ്‌പീഷിസസ്’ (Origin of Species) എന്ന ഗ്രന്ഥത്തിന്റെ കർത്താവാര്?',
+                'option': ['കാൾ ലിനേയസ', 'ചാൾസ് ഡാർവിൻ', 'വാൾട്ടർ സിൻഷീമർ', ' നീൽസ് എൽഡ്രഡ്ജ്'],
+                'ans': 'ചാൾസ് ഡാർവിൻ',
+
+            }, {
+                'qstn': ' വംശനാശഭീഷിണി നേരിടുന്ന ജീവികളെക്കുറിച്ചുള്ള വിവരങ്ങൾ പ്രസിദ്ധികരിക്കുന്ന പുസ്തകം?',
+                'option': ['red data book', 'blue data book', 'white data book', 'gren data book'],
+                'ans': 'red data book',
+
+            },
+
+        ]
+        const correctaudio = new Audio('assets/correct.mp3');
+        const wrongaudio = new Audio('assets/wrong.wav');
+
+        const qstn = document.getElementById('qstn');
+        const option1 = document.getElementById('option1');
+        const option2 = document.getElementById('option2');
+        const option3 = document.getElementById('option3');
+        const option4 = document.getElementById('option4');
+        const options = document.getElementById('options');
+
+        const option_row1 = document.getElementById('option_row1');
+        const option_row2 = document.getElementById('option_row2');
+        const option_row3 = document.getElementById('option_row3');
+        const option_row4 = document.getElementById('option_row4');
+
+        const next = document.getElementById('next');
+        const skip = document.getElementById('skip');
+        const time = document.getElementById('time');
+        const no = document.getElementById('no');
+
+
+        // ---------------- timerfunctionality ----------------
+        let timeset = () => {
+            time.innerHTML = '2:59';
+            // var min = 1;
+            // var sec = 5;
+
+            // setInterval(() => {
+            //     time.innerHTML = min + ':' + sec;
+            //     sec--;
+            //     if (sec == 0) {
+            //         min--;
+            //         sec = 60;
+            //     }
+            //     if (min == 0 ) {
+            //         min = 0;
+            //         sec = 10;
+            //         nextQstn();
+            //     }
+
+            // }, 1000);
+
+        }
+        var index = 0;
+        qstn.innerHTML = qstnsList[0]['qstn'];
+        const option_row = document.querySelectorAll('.option_row');
+
+        const qstnChanger = (index) => {
+            timeset();
+            //  ---------------- for clearing previous datas----------------
+            qstn.innerHTML = '';
+            option1.innerHTML = '';
+            option2.innerHTML = '';
+            option3.innerHTML = '';
+            option4.innerHTML = '';
+            no.innerHTML = '';
+            // ----------------writing new datas----------------
+            no.innerHTML = index + 1 + '/10'
+            qstn.innerHTML = qstnsList[index]['qstn'];
+
+            option1.innerHTML = qstnsList[index]['option'][0]
+            option2.innerHTML = qstnsList[index]['option'][1]
+            option3.innerHTML = qstnsList[index]['option'][2]
+            option4.innerHTML = qstnsList[index]['option'][3]
+
+            index++;
+
+        }
+        qstnChanger(index);
+
+
+        // ---------------- add mark functionality ----------------
+        var mark = 0;
+        var optnumber = '';
+        var clickrow = '';
+        var attended = 0;
+
+        const Addmark = (clickrow) => {
+            mark = mark + 10;
+
+            clickrow.style.backgroundColor = '#02f8bb';
+        }
+        //  ----------------error option selection ----------------
+        const errormsg = (clickrow) => {
+            mark = mark - 2;
+
+
+            clickrow.style.backgroundColor = 'red';
+
+        }
+        // ----------------click option checking function ----------------
+
+        const check = (optnumber, clickrow) => {
+            attended++;
+
+            options.style.pointerEvents = 'none';
+
+            if (optnumber.innerHTML === qstnsList[index]['ans']) {
+
+                Addmark(clickrow);
+                correctaudio.play();
+            }
+            else {
+                wrongaudio.play();
+                errormsg(clickrow);
+
+            }
+        }
+        //----------------option clicked event testing----------------
+        option1.addEventListener('click', () => {
+            var optionnumber = option1;
+            var clickrow = option_row1;
+
+            check(optionnumber, clickrow);
+        })
+
+        option2.addEventListener('click', () => {
+            var optionnumber = option2;
+            var clickrow = option_row2;
+
+            check(optionnumber, clickrow);
+        })
+
+        option3.addEventListener('click', () => {
+            var optionnumber = option3;
+            var clickrow = option_row3;
+
+            check(optionnumber, clickrow);
+        })
+
+        option4.addEventListener('click', () => {
+            var optionnumber = option4;
+            var clickrow = option_row4;
+
+            check(optionnumber, clickrow);
+        })
+
+
+
+        // ----------------next button functionality----------------
+        const nextQstn = () => {
+            timeset();
+            index++;
+            if (index < 10) {
+                qstnChanger(index);
+            }
+            if (index == 10) {
+                var result_array = { attended: attended, mark: mark }
+                localStorage.setItem('res', JSON.stringify(result_array));
+
+                window.location.href = 'resultPage.html';
+            }
+        }
+        next.addEventListener('click', () => {
+            var options = [option_row1, option_row2, option_row3, option_row4];
+            options.forEach((element) => {
+                element.style.pointerEvents = 'auto';
+                element.style.backgroundColor = '';
+            })
+
+            nextQstn();
+
+        });
+        // ----------------skip functionality----------------
+
+        skip.addEventListener('click', () => {
+            var result_array = { attended: attended, mark: mark }
+            localStorage.setItem('res', JSON.stringify(result_array));
+
+            window.location.href = 'resultPage.html';
+
+        })
+    </script>
+
+</body>
+
+</html>

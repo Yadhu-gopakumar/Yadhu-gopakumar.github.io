@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --lightThemeSecondaryFont: #00ff9d;
+    --lightThemeFont: #100a29;
+    --darkTheme: #100a29;
+    --lightTheme:rgb(252, 216, 138);
+}
+
+body {
+    display: grid;
+    place-items: center;
+    background-color:var(--darkTheme);
+    overflow: hidden;
+}
+
+.column {
+    margin-top: 5vh;
+    width: 50vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.result_title {
+    color: var(--lightThemeFont);
+    font-size: 30px;
+}
+
+#result {
+    width: 70%;
+    height: fit-content;
+}
+
+.title,
+.heading {
+    font-size: 20px;
+    color: white;
+
+
+}
+
+.heading {
+    font-size: 34px;
+  
+}
+
+.result {
+    font-size: 20px;
+    color: var(--lightThemeSecondaryFont);
+
+}
+
+.img_container {
+    background-image: url('assets/celeb.png');
+    height: 270px;
+    width: 270px;
+    background-color: rgb(62, 0, 119);
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-size: cover;
+    box-shadow: 0 0 15px 2px rgb(178, 158, 250);
+
+}
+
+.mark_container {
+    color: white;
+    font-size: 70px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgb(102, 67, 3);
+    box-shadow: 0 0 40px rgb(74, 253, 4);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+}
+button{
+    height: 60px;
+    width: 30vw;
+    border-radius: 9px;
+   background-color: #100a29;
+   border:2px solid #6949fd;
+   color:#6949fd;
+   font-size: 20px;
+}
+#reset{
+    background-color: #6949fd;
+    color: white;
+}
+@media only screen and (max-width:600px) {
+
+    .column {
+        width: 90vw;
+
+    }
+    button{
+        height: 45px;
+        width: 70vw;
+    }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="column">
+        <img src="assets/bulb.png">
+        <p class="title">Quizzless</p>
+        <p class="text">Let's Play!</p>
+
+        <Button id="playBtn">Play Now</Button>
+        <Button>About</Button>
+
+    </div>
+
+</body>
+<script>
+
+    const playBtn = document.getElementById('playBtn');
+    playBtn.addEventListener('click', () => {
+        location.href = 'quizDisplay.html';
+    })
+</script>
+
+</html>

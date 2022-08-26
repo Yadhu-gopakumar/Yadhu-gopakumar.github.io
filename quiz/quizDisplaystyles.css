@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito';
+    font-weight: bold;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    background-color: #0f2950;
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 90vw;
+    height: 100vh;
+    color: white;
+}
+.top{
+    display: flex;
+    width: 90vw;
+    align-items: center;
+    justify-content: space-between;
+}
+#time,#no {
+    color: #02f8bb;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#no{
+    color: #f8b602;
+
+}
+
+#qstn {
+    letter-spacing: 1px;
+    width: 45%;
+    font-size: 18px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+#options {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.option_row {
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #02f8bb;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.no {
+    background-color: #361e70;
+    border-radius: 50%;
+    padding: 5px;
+    margin-right: 20px;
+    box-shadow: 0 0 5px white;
+}
+
+#option1,
+#option2,
+#option3,
+#option4 {
+    word-wrap: break-word;
+    word-break: break-all;
+    height: fit-content;
+    font-size: 18px;
+    width: 100%;
+}
+
+.controls {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+#skip,
+#next {
+    height: 40px;
+    border: 0;
+    border-radius: 20px;
+    color: antiquewhite;
+    font-size: 20px;
+    width: 10vw;
+    background-color: #6949fd;
+}
+
+@media only screen and (max-width:600px) {
+
+    #skip,
+    #next {
+        width: 30vw;
+    }
+
+    .controls {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+    }
+
+    #qstn {
+        width: 85%;
+    }
+
+    #options {
+        width: 85%;
+    }
+}
