@@ -21,7 +21,8 @@
         </div>
         <div id="qstn"></div>
         <div id="options">
-            <div class="option_row" id='option_row1'>
+            <div id="option_hide"></div>
+            <div class="option_row " id='option_row1'>
                 <div class="no">01</div>
                 <div id="option1"></div>
             </div>
@@ -117,6 +118,8 @@
         const option_row3 = document.getElementById('option_row3');
         const option_row4 = document.getElementById('option_row4');
 
+        const option_hide = document.getElementById('option_hide');
+        
         const next = document.getElementById('next');
         const skip = document.getElementById('skip');
         const time = document.getElementById('time');
@@ -180,8 +183,8 @@
         var attended = 0;
 
         const Addmark = (clickrow) => {
-            mark = mark + 10;
             attended++;
+            mark = mark + 10;
 
             clickrow.style.backgroundColor = '#02f8bb';
         }
@@ -196,9 +199,10 @@
         // ----------------click option checking function ----------------
 
         const check = (optnumber, clickrow) => {
-            
 
-            options.style.pointerEvents = 'none';
+
+            option_hide.style.display='block';
+        
 
             if (optnumber.innerHTML === qstnsList[index]['ans']) {
 
@@ -244,7 +248,9 @@
 
         // ----------------next button functionality----------------
         const nextQstn = () => {
-            timeset();
+            // timeset();
+            option_hide.style.display='none';
+
             index++;
             if (index < 10) {
                 qstnChanger(index);
@@ -259,7 +265,7 @@
         next.addEventListener('click', () => {
             var options = [option_row1, option_row2, option_row3, option_row4];
             options.forEach((element) => {
-                element.style.pointerEvents = 'auto';
+                option_hide.style.display='none';
                 element.style.backgroundColor = '';
             })
 
