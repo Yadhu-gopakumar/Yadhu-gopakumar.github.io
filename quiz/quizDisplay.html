@@ -181,6 +181,7 @@
 
         const Addmark = (clickrow) => {
             mark = mark + 10;
+            attended++;
 
             clickrow.style.backgroundColor = '#02f8bb';
         }
@@ -195,7 +196,7 @@
         // ----------------click option checking function ----------------
 
         const check = (optnumber, clickrow) => {
-            attended++;
+            
 
             options.style.pointerEvents = 'none';
 
