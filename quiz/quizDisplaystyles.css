@@ -48,13 +48,22 @@ body {
 }
 
 #options {
+    position: relative;
     width: 45%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
 }
-
+#option_hide{
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    position: absolute;
+    cursor: pointer;
+    background-color: transparent;
+    display: none;
+}
 .option_row {
     border-radius: 10px;
     margin: 10px;
