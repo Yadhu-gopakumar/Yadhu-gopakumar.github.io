@@ -1,18 +1,21 @@
-/*
-  Theme Name: TheEvent
-  Theme URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
-  Author: BootstrapMade.com
-  License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
-
 body {
   background: #fff;
   color: #2f3138;
   font-family: "Open Sans", sans-serif;
+}
+
+.scrollto {
+  height: 200px;
+  position: relative;
+  background-color: #152b79;
+  height: 250px;
+}
+.about-btn{
+  height: fit-content;
+}
+.scrollto>img {
+  height: 150px;
+  position: absolute;
 }
 
 a {
@@ -145,7 +148,7 @@ h6 {
 --------------------------------------------------------------*/
 
 #header {
-  height: 90px;
+  height: 100px;
   padding: 25px 0;
   position: fixed;
   left: 0;
@@ -215,12 +218,12 @@ h6 {
   white-space: nowrap;
 }
 
-.nav-menu > li {
+.nav-menu>li {
   float: left;
 }
 
-.nav-menu li:hover > ul,
-.nav-menu li.sfHover > ul {
+.nav-menu li:hover>ul,
+.nav-menu li.sfHover>ul {
   display: block;
 }
 
@@ -277,11 +280,11 @@ h6 {
   color: #fff;
 }
 
-.nav-menu > li {
+.nav-menu>li {
   margin-left: 8px;
 }
 
-.nav-menu > li > a:before {
+.nav-menu>li>a:before {
   content: "";
   position: absolute;
   width: 0;
@@ -294,8 +297,8 @@ h6 {
 }
 
 .nav-menu a:hover:before,
-.nav-menu li:hover > a:before,
-.nav-menu .menu-active > a:before {
+.nav-menu li:hover>a:before,
+.nav-menu .menu-active>a:before {
   visibility: visible;
   width: 100%;
 }
@@ -345,7 +348,7 @@ h6 {
   border-radius: 3px;
 }
 
-.nav-menu ul li:hover > a {
+.nav-menu ul li:hover>a {
   background: #f82249;
   color: #fff;
 }
@@ -688,7 +691,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 }
 
-#about p {
+#about> p {
   font-size: 14px;
   margin-bottom: 20px;
   color: #fff;
@@ -1218,7 +1221,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #buy-tickets .card {
   border: none;
   border-radius: 5px;
-  transition: all  0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   box-shadow: 0 10px 25px 0 rgba(6, 12, 34, 0.1);
 }
 
@@ -1548,6 +1551,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 @media (min-width: 768px) {
+
   #contact .contact-address,
   #contact .contact-phone,
   #contact .contact-email {
