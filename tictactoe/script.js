@@ -126,7 +126,7 @@ winAudio.play();
     }
     if (combination == win_combos[3]) {
         strike.style.display = 'block';
-        strike.style.left = '50px';
+        strike.style.right = '150px';
         strike.style.transform = 'rotate(90deg)';
     }
     if (combination == win_combos[4]) {
