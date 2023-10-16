@@ -4,10 +4,11 @@ win_flag = false;
 const winAudio = new Audio('assets/win.wav');
 const drwAudio = new Audio('assets/draw.wav');
 const clickAudio = new Audio('assets/click.wav');
+const xclickAudio = new Audio('assets/xclick.mp3');
 
 start_btn.addEventListener('click', () => {
     start_display.style.display = 'none';
-clickAudio.play();
+xclickAudio.play();
 })
 
 
@@ -48,8 +49,9 @@ box.forEach(function (selected_box) {
     selected_box.addEventListener('click', () => {
 
         if (selected_box.innerHTML == "") {
-            clickAudio.play();
+            
             selected_box.innerHTML = current_player;
+           
             togglePlay(current_player, selected_box);
 
             filledBox++;
@@ -70,12 +72,12 @@ var tgle_btn = document.getElementById("toggler");
 function togglePlay(current_player, selected_box) {
 
     if (current_player == "x") {
-
+        clickAudio.play();
         tgle_btn.style.left = "92px";
         selected_box.style.color = 'red';
     }
     if (current_player == "o") {
-
+        xclickAudio.play();
         tgle_btn.style.left = '3px';
         selected_box.style.color = ' rgb(0, 153, 255)';
 
